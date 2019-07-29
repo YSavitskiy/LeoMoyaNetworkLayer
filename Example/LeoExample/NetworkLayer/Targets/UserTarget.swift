@@ -1,16 +1,22 @@
-import Foundation
+//
+//  UserTarget.swift
+//  LeoExample
+//
+//  Created by Yuriy Savitskiy on 7/29/19.
+//  Copyright © 2019 Yuriy Savitskiy. All rights reserved.
+//
+
 import LEONetworkLayer
 import Moya
 
-enum AuthentificationTarget {
-    case sendPhone(phone: String)
-    case login(login: SignInParameters)
-    case verify(login: SigninRequest)
-    case register(userId: String, userData: UserDetailsRequest)
-    case refreshToken(refreshToken: String)
+enum UserTarget {
+    case createUser(name: String)
+    case readUsers
+    case updateUser(id: Int, name: String)
+    case deleteUser(id: Int)
 }
 
-extension AuthentificationTarget: ILeoTargetType {
+extension UserTarget: ILeoTargetType {
     var path: String {
         switch self {
         case .readUsers, .createUser(_):
@@ -64,5 +70,5 @@ extension AuthentificationTarget: ILeoTargetType {
         case .createUser(let name), .updateUser(_, let name):
             return .requestParameters(parameters: ["name":name], encoding: JSONEncoding.default)
         }
-    }    
+    }
 }

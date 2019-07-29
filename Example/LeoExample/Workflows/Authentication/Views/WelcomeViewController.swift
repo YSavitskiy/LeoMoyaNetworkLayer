@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import LEONetworkLayer
 
 class WelcomeViewController: UIViewController {
     
@@ -25,7 +26,7 @@ class WelcomeViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    let userProvider = LeoProvider<AuthentificationTarget>()
+    let userProvider = LeoProvider<UserTarget>(tokenManager: nil)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,36 +38,43 @@ class WelcomeViewController: UIViewController {
             switch event {
             case let .success(response):
                 if let returnData = String(data: response.data, encoding: .utf8) {
-                print(returnData)
+                    print(returnData)
                 }
                 
                 //let users = try! JSONDecoder().decode([User].self, from: response.data)
                 //self.users = users
                 
             case let .error(error):
-                print(error)
+                if let leoError = LeoProviderError.toLeoError(error) {
+                    
+                    
+                    print(leoError)
+                } else {
+                    print(error)
+                }
             }
-            }.disposed(by: self.disposeBag)
+        }.disposed(by: self.disposeBag)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        
-      
-        
     }
     
     private func setupViews() {
         self.title = ""
-        
+        self.phoneField.addTarget(self, action: #selector(fixPhone), for: .editingChanged)
         self.nextButton.isEnabled = true
         self.nextButton.addTarget(self, action: #selector(nextButtonTap(_:)), for: .touchUpInside)
-        
+    
         self.errorLabel.text = ""
     }
     
     @objc func nextButtonTap(_ sender: UIButton) {
         onNext?()
+    }
+    
+    @objc private func fixPhone() {
+        self.phoneField.text = self.phoneField.text?.left(10)
     }
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7c449a8b-b6c9-4967-a994-72f38580ead0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/LeoExample/Extensions/String+edit.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Models/LeoArray.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Models/LeoObject.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Models/SigninRequest.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/NewsTarget.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/UserTarget.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/Services/NewsService.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/Storages/AccountStorage.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeoExample/Storages/KeychainStorage.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeoNetworkLayer/Mock/LeoMock.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LeoNetworkLayer/Targets/LeoTargetType.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/ApplicationLayer/AppContext.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/ApplicationLayer/AppContext.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/ApplicationLayer/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/ApplicationLayer/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/NetworkLayer/Plugins/LeoErrorPlugin.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/NetworkLayer/Plugins/TestPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Plugins/TestPlugin.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/AuthentificationTarget.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/AuthentificationTarget.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/LeoProvider.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/LeoTargetType.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/NetworkLayer/Targets/LeoTargetType.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/Services/AccountService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/Services/AccountService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/Workflows/Authentication/Views/WelcomeViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/Workflows/Authentication/Views/WelcomeViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LeoExample/Workflows/Authentication/Views/WelcomeViewController.xib" beforeDir="false" afterPath="$PROJECT_DIR$/LeoExample/Workflows/Authentication/Views/WelcomeViewController.xib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LEONetworkLayer.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/../LEONetworkLayer.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeoNetworkLayer.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../LeoNetworkLayer.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeoNetworkLayer/Nested/TestClass2.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeoNetworkLayer/TestClass.swift" beforeDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/LeoExample-enoeluyhzvsyvyfebhlskttovyco/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1811134256">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="119" />
+    <option name="y" value="68" />
+    <option name="width" value="1920" />
+    <option name="height" value="991" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c449a8b-b6c9-4967-a994-72f38580ead0" name="Default Changelist" comment="" />
+      <created>1564401344277</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564401344277</updated>
+      <workItem from="1564401347029" duration="9000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="119" y="68" width="1920" height="991" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+</project>

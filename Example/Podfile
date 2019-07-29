@@ -2,6 +2,14 @@ platform :ios, '10.0'
 
 target 'LeoExample' do
   use_frameworks!
-  pod 'BaseCoordinator'
+
+  # General
+  pod 'BaseCoordinator', '~> 1.0'
+  
+  # Networking
   pod 'LEONetworkLayer', :path => '../'
+
+  # Helpers
+  pod 'KeychainSwift', '~> 16.0'
+
 end
