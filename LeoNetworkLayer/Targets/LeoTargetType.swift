@@ -3,6 +3,8 @@ import Foundation
 import Moya
 
 public protocol ILeoTargetType: TargetType, AccessTokenAuthorizable  {
+    var baseURL:URL { get }
+    var authorization: AuthorizationType { get }
 }
 
 public extension ILeoTargetType {
@@ -16,6 +18,10 @@ public extension ILeoTargetType {
     
     var sampleData: Data {
         return Data()
+    }
+    
+    var authorizationType: AuthorizationType {
+        return authorization
     }
 }
 

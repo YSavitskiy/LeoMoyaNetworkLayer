@@ -7,3 +7,48 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+
+enum AuthenticationViewModelState {
+    case welcome
+    case loading
+    case confirmation
+    case dataError(String)
+    case finished
+}
+
+class AuthenticationViewModel {
+    let state: BehaviorRelay<AuthenticationViewModelState>
+    let message = BehaviorRelay<String?>(value: nil)
+    let errorMessage = BehaviorRelay<String?>(value: nil)
+    let title = BehaviorRelay<String?>(value: nil)
+    let onNextEvent = PublishRelay<Void>()
+    let number = BehaviorRelay<String?>(value: nil)
+    let disposeBag = DisposeBag()
+    
+    private let context: Context
+    typealias Context = IAccountServiceContext
+    
+    init(context: Context, startState: AuthenticationViewModelState) {
+        self.context = context
+        self.state = BehaviorRelay<AuthenticationViewModelState>(value: startState)
+        self.setupRx()
+    }
+    
+    private func setupRx() {
+        onNextEvent.withLatestFrom(number)
+            .bind(onNext: {[weak self] number in
+                if let `self` = self {
+                    if let number = number {
+                        self.context.accountService.sendPhone(phone: number).subscribe { event in
+                            
+                            }.disposed(by: self.disposeBag)
+                    }
+                }
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+}

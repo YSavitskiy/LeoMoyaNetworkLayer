@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E68F2E5748F5AC336BF019C /* Pods_LeoExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F3923DCF88629DA765C368 /* Pods_LeoExample.framework */; };
 		8D4546FB22E1BE45008B7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4546FA22E1BE45008B7C61 /* AppDelegate.swift */; };
 		8D45470222E1BE46008B7C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D45470122E1BE46008B7C61 /* Assets.xcassets */; };
 		8D45470522E1BE46008B7C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D45470322E1BE46008B7C61 /* LaunchScreen.storyboard */; };
+		9A5E827C22EFF11D0089C626 /* SwiftGen.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E827B22EFF11D0089C626 /* SwiftGen.sh */; };
+		9A5E827F22EFF29D0089C626 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E827E22EFF29D0089C626 /* Localizable.strings */; };
+		9A5E828122EFFBB90089C626 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E828022EFFBB90089C626 /* Strings.swift */; };
+		9A5E828422F039790089C626 /* AccountStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E828322F039790089C626 /* AccountStatus.swift */; };
 		9AEB96E122E9906A0060E6F8 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96E022E9906A0060E6F8 /* AccountService.swift */; };
 		9AEB96E622E990750060E6F8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96E322E990750060E6F8 /* AppCoordinator.swift */; };
 		9AEB96E722E990750060E6F8 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96E422E990750060E6F8 /* AppContext.swift */; };
@@ -17,8 +22,8 @@
 		9AEB96F022E990D80060E6F8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96EE22E990D80060E6F8 /* MainCoordinator.swift */; };
 		9AEB96F422E991550060E6F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96F222E991550060E6F8 /* MainViewController.swift */; };
 		9AEB96F522E991550060E6F8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB96F322E991550060E6F8 /* MainViewController.xib */; };
-		9AEB96F822E9915F0060E6F8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96F622E9915E0060E6F8 /* WelcomeViewController.swift */; };
-		9AEB96F922E9915F0060E6F8 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB96F722E9915E0060E6F8 /* WelcomeViewController.xib */; };
+		9AEB96F822E9915F0060E6F8 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB96F622E9915E0060E6F8 /* AuthenticationViewController.swift */; };
+		9AEB96F922E9915F0060E6F8 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB96F722E9915E0060E6F8 /* AuthenticationViewController.xib */; };
 		9AEB970122E9961C0060E6F8 /* AuthentificationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB970022E9961C0060E6F8 /* AuthentificationTarget.swift */; };
 		9AEB970322E997170060E6F8 /* LeoTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB970222E997170060E6F8 /* LeoTargetType.swift */; };
 		9AEB970822E9B8900060E6F8 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB970722E9B8900060E6F8 /* AuthenticationViewModel.swift */; };
@@ -32,19 +37,22 @@
 		9AEB976A22EF05810060E6F8 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB976922EF05810060E6F8 /* NewsService.swift */; };
 		9AEB976C22EF05B30060E6F8 /* UserTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB976B22EF05B30060E6F8 /* UserTarget.swift */; };
 		9AEB976E22EF05C00060E6F8 /* NewsTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB976D22EF05C00060E6F8 /* NewsTarget.swift */; };
-		9AEB977222EF12C40060E6F8 /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB977122EF12C40060E6F8 /* SigninRequest.swift */; };
-		9AEB977422EF152F0060E6F8 /* BaseRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB977322EF152F0060E6F8 /* BaseRequestParameters.swift */; };
-		E2F0D40739E120E6CD3B066B /* Pods_LeoExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A48DDE32E1B05BBD3A5133 /* Pods_LeoExample.framework */; };
+		9AEB977222EF12C40060E6F8 /* TokenRequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB977122EF12C40060E6F8 /* TokenRequestParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05B136CDCAF309ADD1C42CFA /* Pods-LeoExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoExample.debug.xcconfig"; path = "Target Support Files/Pods-LeoExample/Pods-LeoExample.debug.xcconfig"; sourceTree = "<group>"; };
-		2E3E887F03329759059A2E72 /* Pods-LeoExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoExample.release.xcconfig"; path = "Target Support Files/Pods-LeoExample/Pods-LeoExample.release.xcconfig"; sourceTree = "<group>"; };
+		06112B9C6E855ED282C9DD78 /* Pods-LeoExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoExample.debug.xcconfig"; path = "Target Support Files/Pods-LeoExample/Pods-LeoExample.debug.xcconfig"; sourceTree = "<group>"; };
+		2A16CAA3157B45A169B48AA0 /* Pods-LeoExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoExample.release.xcconfig"; path = "Target Support Files/Pods-LeoExample/Pods-LeoExample.release.xcconfig"; sourceTree = "<group>"; };
+		79F3923DCF88629DA765C368 /* Pods_LeoExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4546F722E1BE45008B7C61 /* LeoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4546FA22E1BE45008B7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D45470122E1BE46008B7C61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D45470422E1BE46008B7C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D45470622E1BE46008B7C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A5E827B22EFF11D0089C626 /* SwiftGen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = SwiftGen.sh; sourceTree = "<group>"; };
+		9A5E827E22EFF29D0089C626 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9A5E828022EFFBB90089C626 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		9A5E828322F039790089C626 /* AccountStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatus.swift; sourceTree = "<group>"; };
 		9AEB96E022E9906A0060E6F8 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		9AEB96E322E990750060E6F8 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9AEB96E422E990750060E6F8 /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
@@ -52,8 +60,8 @@
 		9AEB96EE22E990D80060E6F8 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		9AEB96F222E991550060E6F8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9AEB96F322E991550060E6F8 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		9AEB96F622E9915E0060E6F8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		9AEB96F722E9915E0060E6F8 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		9AEB96F622E9915E0060E6F8 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		9AEB96F722E9915E0060E6F8 /* AuthenticationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		9AEB970022E9961C0060E6F8 /* AuthentificationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationTarget.swift; sourceTree = "<group>"; };
 		9AEB970222E997170060E6F8 /* LeoTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeoTargetType.swift; sourceTree = "<group>"; };
 		9AEB970722E9B8900060E6F8 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -67,9 +75,7 @@
 		9AEB976922EF05810060E6F8 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		9AEB976B22EF05B30060E6F8 /* UserTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarget.swift; sourceTree = "<group>"; };
 		9AEB976D22EF05C00060E6F8 /* NewsTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTarget.swift; sourceTree = "<group>"; };
-		9AEB977122EF12C40060E6F8 /* SigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
-		9AEB977322EF152F0060E6F8 /* BaseRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestParameters.swift; sourceTree = "<group>"; };
-		B3A48DDE32E1B05BBD3A5133 /* Pods_LeoExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEB977122EF12C40060E6F8 /* TokenRequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequestParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,17 +83,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2F0D40739E120E6CD3B066B /* Pods_LeoExample.framework in Frameworks */,
+				2E68F2E5748F5AC336BF019C /* Pods_LeoExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F8DDA1EC85932C67E1CA003 /* Frameworks */ = {
+		71C6FF70B3C3EE1AC515A412 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3A48DDE32E1B05BBD3A5133 /* Pods_LeoExample.framework */,
+				79F3923DCF88629DA765C368 /* Pods_LeoExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,7 +104,7 @@
 				8D4546F922E1BE45008B7C61 /* LeoExample */,
 				8D4546F822E1BE45008B7C61 /* Products */,
 				BF8D357137A633E22A9BD93E /* Pods */,
-				3F8DDA1EC85932C67E1CA003 /* Frameworks */,
+				71C6FF70B3C3EE1AC515A412 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +119,7 @@
 		8D4546F922E1BE45008B7C61 /* LeoExample */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E827A22EFF0F60089C626 /* Constants */,
 				9AEB96DE22E98FD80060E6F8 /* ApplicationLayer */,
 				9AEB974E22EEAEE60060E6F8 /* BusinessLogicLayer */,
 				9AEB96D422E98F0A0060E6F8 /* Configuration */,
@@ -126,9 +133,26 @@
 			path = LeoExample;
 			sourceTree = "<group>";
 		};
+		9A5E827A22EFF0F60089C626 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9A5E828022EFFBB90089C626 /* Strings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		9A5E828222F039610089C626 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				9A5E828322F039790089C626 /* AccountStatus.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		9AEB96D422E98F0A0060E6F8 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E827B22EFF11D0089C626 /* SwiftGen.sh */,
 				8D45470622E1BE46008B7C61 /* Info.plist */,
 			);
 			path = Configuration;
@@ -148,6 +172,7 @@
 			children = (
 				8D45470122E1BE46008B7C61 /* Assets.xcassets */,
 				8D45470322E1BE46008B7C61 /* LaunchScreen.storyboard */,
+				9A5E827E22EFF29D0089C626 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -194,8 +219,8 @@
 		9AEB96EC22E990CA0060E6F8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9AEB96F622E9915E0060E6F8 /* WelcomeViewController.swift */,
-				9AEB96F722E9915E0060E6F8 /* WelcomeViewController.xib */,
+				9AEB96F622E9915E0060E6F8 /* AuthenticationViewController.swift */,
+				9AEB96F722E9915E0060E6F8 /* AuthenticationViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,10 +248,10 @@
 		9AEB96FC22E995450060E6F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9AEB977522EFE5150060E6F8 /* Requests */,
+				9A5E828222F039610089C626 /* Responses */,
 				9AEB974222EEA8120060E6F8 /* LeoObject.swift */,
 				9AEB974422EEA81F0060E6F8 /* LeoArray.swift */,
-				9AEB977122EF12C40060E6F8 /* SigninRequest.swift */,
-				9AEB977322EF152F0060E6F8 /* BaseRequestParameters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,11 +330,19 @@
 			path = Providers;
 			sourceTree = "<group>";
 		};
+		9AEB977522EFE5150060E6F8 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB977122EF12C40060E6F8 /* TokenRequestParameters.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		BF8D357137A633E22A9BD93E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				05B136CDCAF309ADD1C42CFA /* Pods-LeoExample.debug.xcconfig */,
-				2E3E887F03329759059A2E72 /* Pods-LeoExample.release.xcconfig */,
+				06112B9C6E855ED282C9DD78 /* Pods-LeoExample.debug.xcconfig */,
+				2A16CAA3157B45A169B48AA0 /* Pods-LeoExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -321,11 +354,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D45470922E1BE46008B7C61 /* Build configuration list for PBXNativeTarget "LeoExample" */;
 			buildPhases = (
-				566049666FC7D6F18B10C0C9 /* [CP] Check Pods Manifest.lock */,
+				DC0201E5F57B9487F186AB67 /* [CP] Check Pods Manifest.lock */,
+				9A5E827D22EFF1B80089C626 /* SwiftGen */,
 				8D4546F322E1BE45008B7C61 /* Sources */,
 				8D4546F422E1BE45008B7C61 /* Frameworks */,
 				8D4546F522E1BE45008B7C61 /* Resources */,
-				4587FEEF86B4803514A5A199 /* [CP] Embed Pods Frameworks */,
+				88ADF002B8CD884EA4E6F6AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -375,7 +409,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D45470522E1BE46008B7C61 /* LaunchScreen.storyboard in Resources */,
-				9AEB96F922E9915F0060E6F8 /* WelcomeViewController.xib in Resources */,
+				9A5E827F22EFF29D0089C626 /* Localizable.strings in Resources */,
+				9A5E827C22EFF11D0089C626 /* SwiftGen.sh in Resources */,
+				9AEB96F922E9915F0060E6F8 /* AuthenticationViewController.xib in Resources */,
 				9AEB96F522E991550060E6F8 /* MainViewController.xib in Resources */,
 				8D45470222E1BE46008B7C61 /* Assets.xcassets in Resources */,
 			);
@@ -384,7 +420,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4587FEEF86B4803514A5A199 /* [CP] Embed Pods Frameworks */ = {
+		88ADF002B8CD884EA4E6F6AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,7 +437,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LeoExample/Pods-LeoExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		566049666FC7D6F18B10C0C9 /* [CP] Check Pods Manifest.lock */ = {
+		9A5E827D22EFF1B80089C626 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PROJECT_DIR/$PROJECT_NAME/Configuration/SwiftGen.sh\n";
+		};
+		DC0201E5F57B9487F186AB67 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,14 +487,13 @@
 				9AEB970822E9B8900060E6F8 /* AuthenticationViewModel.swift in Sources */,
 				9AEB974322EEA8120060E6F8 /* LeoObject.swift in Sources */,
 				9AEB976822EF05770060E6F8 /* UserService.swift in Sources */,
-				9AEB977422EF152F0060E6F8 /* BaseRequestParameters.swift in Sources */,
-				9AEB977222EF12C40060E6F8 /* SigninRequest.swift in Sources */,
+				9AEB977222EF12C40060E6F8 /* TokenRequestParameters.swift in Sources */,
 				9AEB976C22EF05B30060E6F8 /* UserTarget.swift in Sources */,
 				9AEB96F422E991550060E6F8 /* MainViewController.swift in Sources */,
 				9AEB970322E997170060E6F8 /* LeoTargetType.swift in Sources */,
 				9AEB976E22EF05C00060E6F8 /* NewsTarget.swift in Sources */,
 				9AEB976A22EF05810060E6F8 /* NewsService.swift in Sources */,
-				9AEB96F822E9915F0060E6F8 /* WelcomeViewController.swift in Sources */,
+				9AEB96F822E9915F0060E6F8 /* AuthenticationViewController.swift in Sources */,
 				9AEB974D22EEAE1E0060E6F8 /* AccountStorage.swift in Sources */,
 				9AEB96EA22E990C10060E6F8 /* AuthenticationCoordinator.swift in Sources */,
 				9AEB96F022E990D80060E6F8 /* MainCoordinator.swift in Sources */,
@@ -453,6 +506,8 @@
 				9AEB970122E9961C0060E6F8 /* AuthentificationTarget.swift in Sources */,
 				8D4546FB22E1BE45008B7C61 /* AppDelegate.swift in Sources */,
 				9AEB975422EEC1520060E6F8 /* KeychainStorage.swift in Sources */,
+				9A5E828122EFFBB90089C626 /* Strings.swift in Sources */,
+				9A5E828422F039790089C626 /* AccountStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +643,7 @@
 		};
 		8D45470A22E1BE46008B7C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05B136CDCAF309ADD1C42CFA /* Pods-LeoExample.debug.xcconfig */;
+			baseConfigurationReference = 06112B9C6E855ED282C9DD78 /* Pods-LeoExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -608,7 +663,7 @@
 		};
 		8D45470B22E1BE46008B7C61 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E3E887F03329759059A2E72 /* Pods-LeoExample.release.xcconfig */;
+			baseConfigurationReference = 2A16CAA3157B45A169B48AA0 /* Pods-LeoExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

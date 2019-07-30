@@ -12,17 +12,17 @@ import Moya
 extension ILeoTargetType {
     var baseURL: URL {
         #if DEBUG
-            return URL(string: "https://jsonplaceholder.typicode.com")!
+            return URL(string: "http://dev.midea.back.magora.team/api/v0.1")!
         #elseif UAT
             return URL(string: "http://uat.midea.back.magora.team/api/v0.1")!
         #elseif STAGE
             return URL(string: "https://stage.back.midea-education.com/api/v0.1")!
         #else
-            return URL(string: "https://jsonplaceholder.typicode.com")!
+            return URL(string: "http://dev.midea.back.magora.team/api/v0.1")!
         #endif
     }
     
-    var authorizationType: AuthorizationType {
+    var authorization: AuthorizationType {
         return .bearer
     }
 }

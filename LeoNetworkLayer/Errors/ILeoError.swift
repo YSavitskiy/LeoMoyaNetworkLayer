@@ -19,6 +19,7 @@ public protocol LeoErrorConverter {
 
 public enum LeoProviderError: ILeoError, LeoErrorConverter {
     case simpleError
+    case notLeoObject
     case serverError
     case moyaError(MoyaError)
     

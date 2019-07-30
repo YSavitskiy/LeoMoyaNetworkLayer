@@ -29,19 +29,17 @@ public class LeoPlugin: PluginType {
     public func willSend(_ request: RequestType, target: TargetType) {
         print("send")
         self.request = (request, target)
-        
-        // We check for whether or not we did prepare here to make sure prepare gets called
-        // before willSend 
         didPrepare = request.request?.allHTTPHeaderFields?["prepared"] == "yes"
     }
     
     public func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         print("did receive")
         self.result = result
-        
     }
     
     public func process(_ result: Result<Response, MoyaError>, target: TargetType) -> Result<Response, MoyaError> {
+        print("process")
+        
         let result = result
         
         switch result {

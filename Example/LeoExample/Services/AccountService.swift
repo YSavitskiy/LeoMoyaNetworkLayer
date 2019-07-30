@@ -15,20 +15,29 @@ import LEONetworkLayer
 protocol IAccountService {
     var isAuthenticated: Bool { get }
     var logoutHandler: (() -> Void)? { get set }
+    
+    func sendPhone(phone: String) -> Single<Response>
+    //func signin(phone: String, code: String) -> Single<SignInResponse>
+    
     func login()
     func signOut()
+    var accountProvider: LeoProvider<AuthentificationTarget> {get}
 }
 
 class AccountService: IAccountService {
     private(set) var accountStorage: IAccountStorage
-    lazy private var accountProvider = LeoProvider<AuthentificationTarget>(tokenManager: self)
+    lazy public var accountProvider = LeoProvider<AuthentificationTarget>(tokenManager: self, mockType: .delay(1))
     
     private let loginKey = "login"
     
     var isAuthenticated: Bool {
         return accountStorage.accessToken != nil
     }
-        
+    
+    func sendPhone(phone: String) -> Single<Response> {
+        return accountProvider.rx.request(.sendPhone(phone: phone))
+    }
+    
     func login() {
         accountStorage.accessToken = "test"
     }
