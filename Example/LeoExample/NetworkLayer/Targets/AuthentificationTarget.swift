@@ -56,7 +56,7 @@ extension AuthentificationTarget: ILeoTargetType {
                     {"data": {
                         "signUp": false            
                         },
-                     "code":"success"}
+                     "code":"not_found"}
                     """
                 return mockResponse.data(using: .utf8)!
             default:

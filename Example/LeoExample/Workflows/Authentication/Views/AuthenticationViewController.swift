@@ -36,28 +36,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        /*
-        userProvider.rx.request(.readUsers).subscribe { event in
-            switch event {
-            case let .success(response):
-                if let returnData = String(data: response.data, encoding: .utf8) {
-                    print(returnData)
-                }
-                
-                //let users = try! JSONDecoder().decode([User].self, from: response.data)
-                //self.users = users
-                
-            case let .error(error):
-                if let leoError = LeoProviderError.toLeoError(error) {
-                    
-                    
-                    print(leoError)
-                } else {
-                    print(error)
-                }
-            }
-        }.disposed(by: self.disposeBag)*/
+        super.viewWillAppear(animated)        
     }
     
     override func viewDidLoad() {
@@ -109,11 +88,10 @@ class AuthenticationViewController: UIViewController {
                 return result
             })
             .bind(to: viewModel.number)
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
         
         self.viewModel.errorMessage
             .bind(to: self.errorLabel.rx.text)
-            .disposed(by: self.disposeBag)
-        
+            .disposed(by: self.disposeBag)        
     }
 }

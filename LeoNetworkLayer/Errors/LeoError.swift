@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-public protocol ILeoError : Swift.Error {
+public protocol ILeoError : Error {
 }
 
 public protocol LeoErrorConverter {
@@ -17,12 +17,8 @@ public protocol LeoErrorConverter {
     static func toLeoError(_ result: Result<Response, MoyaError>) -> ILeoError?
 }
 
-public enum LeoProviderError: ILeoError, LeoErrorConverter {
-    case simpleError
-    case notLeoObject
-    case serverError
-    case moyaError(MoyaError)
-    
+
+public struct LeoError: ILeoError, LeoErrorConverter {
     public static func toLeoError(_ result: Result<Response, MoyaError>) -> ILeoError? {
         let result = result
         switch result {
@@ -34,10 +30,6 @@ public enum LeoProviderError: ILeoError, LeoErrorConverter {
     }
     
     public static func toLeoError(_ error: Error) -> ILeoError? {
-        if let leoError = error as? ILeoError {
-            return leoError
-        }
-        
         if let moyaError = error as? MoyaError {
             if case .underlying(let underlyingError, _) = moyaError {
                 if let leoError = underlyingError as? ILeoError {
@@ -46,9 +38,12 @@ public enum LeoProviderError: ILeoError, LeoErrorConverter {
             }
             return LeoProviderError.moyaError(moyaError)
         }
+        
+        if let leoError = error as? ILeoError {
+            return leoError
+        }
+        
         return nil
     }
 }
-
-
 

@@ -32,7 +32,7 @@ class AuthenticationCoordinator: BaseCoordinator {
     // MARK: Starting modules
     private func startWelcome() {
         let viewModel = AuthenticationViewModel(context: self.context, startState: .welcome)
-        viewModel.onNextEvent.bind(onNext: {[weak self] state in
+        viewModel.onSuccessEvent.bind(onNext: {[weak self] state in
             self?.startCode()
         })
             .disposed(by: disposeBag)

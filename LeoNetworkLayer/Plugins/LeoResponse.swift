@@ -1,5 +1,6 @@
 import Moya
 import enum Result.Result
+import RxSwift
 
 public protocol ILeoResponse {
     var isNotAuthorized: Bool {get}
@@ -19,40 +20,28 @@ extension Response: ILeoResponse {
         return self.statusCode == 401
     }
     
+    public func parseCode() -> Result<Response, MoyaError>? {
+        var result: Result<Response, MoyaError>? = nil
+        if let baseObject = try? self.map(LeoBaseObject.self) {
+            print(baseObject.code)
+        } else {
+            result = .failure(MoyaError.underlying(LeoProviderError.badLeoResponse, self))
+        }
+        return result
+    }
+    
     public func parseSuccess() -> Result<Response, MoyaError>? {
         print(self.statusCode)
         var result: Result<Response, MoyaError>? = nil
         
         if (self.statusCode >= 200) && (self.statusCode <= 299) {
             //print(String(data: self.data, encoding: .utf8))
-            if let baseObject = self.decodeData(LeoBaseObject.self) {
-                
-                switch baseObject.code {
-                case .success:
-                    print("0")
-                case .businessConflict:
-                    print("1")
-                case .unprocessableEntity:
-                    print("2")
-                case .badParameters:
-                    print("3")
-                case .internalError:
-                    print("4")
-                case .notFound:
-                    print("5")
-                case .securityError:
-                    print("6")
-                case .permissionError:
-                    print("7")
-                case .unknown:
-                    print("8")
-                @unknown default:
-                    print("9")
-                }
-                
+            
+            if let baseObject = try? self.map(LeoBaseObject.self) {
                 print(baseObject.code)
             }
-        //    result = .failure(MoyaError.underlying(LeoProviderError.notLeoObject, self))
+            
+            result = .failure(MoyaError.underlying(LeoProviderError.badLeoResponse, self))
         }
         return result
     }

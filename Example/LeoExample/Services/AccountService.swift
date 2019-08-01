@@ -11,7 +11,6 @@ import RxSwift
 import Moya
 import LEONetworkLayer
 
-
 protocol IAccountService {
     var isAuthenticated: Bool { get }
     var logoutHandler: (() -> Void)? { get set }
@@ -26,7 +25,7 @@ protocol IAccountService {
 
 class AccountService: IAccountService {
     private(set) var accountStorage: IAccountStorage
-    lazy public var accountProvider = LeoProvider<AuthentificationTarget>(tokenManager: self, mockType: .delay(1))
+    lazy public var accountProvider = LeoProvider<AuthentificationTarget>(tokenManager: self, mockType: .none, plugins: [TestPlugin()])
     
     private let loginKey = "login"
     
@@ -35,7 +34,8 @@ class AccountService: IAccountService {
     }
     
     func sendPhone(phone: String) -> Single<Response> {
-        return accountProvider.rx.request(.sendPhone(phone: phone))
+        return accountProvider.rx
+            .request(.sendPhone(phone: phone))
     }
     
     func login() {
@@ -70,6 +70,11 @@ class AccountService: IAccountService {
 
 
 extension AccountService: ILeoTokenManager {
+    
+    var refreshTokenTimeout: TimeInterval {
+        return 12.0
+    }
+    
     func getAccessToken() -> String {
         return accountStorage.accessToken ?? ""
     }
@@ -78,8 +83,12 @@ extension AccountService: ILeoTokenManager {
         return accountStorage.refreshToken ?? ""
     }
     
-    func refreshToken() -> Single<String> {
-        return Single.just("TODO")
+    func refreshToken() -> Single<Response>? {
+        if let token = accountStorage.refreshToken {
+            return accountProvider.rx.request(.refreshToken(refreshToken: token ))
+        } else {
+            return nil
+        }
     }
     
     func clearTokensAndHandleLogout() {

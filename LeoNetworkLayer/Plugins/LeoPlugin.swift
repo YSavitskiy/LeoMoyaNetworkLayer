@@ -10,10 +10,11 @@ import Moya
 import enum Result.Result
 
 public class LeoPlugin: PluginType {
-    var tokenManager: ILeoTokenManager?
-    var request: (RequestType, TargetType)?
-    var result: Result<Moya.Response, MoyaError>?
-    var didPrepare = false     
+    private var tokenManager: ILeoTokenManager?
+    private var request: (RequestType, TargetType)?
+    private var result: Result<Moya.Response, MoyaError>?
+    
+    private var didPrepare = false
     
     public init(tokenManager: ILeoTokenManager?) {
         self.tokenManager = tokenManager
@@ -47,18 +48,25 @@ public class LeoPlugin: PluginType {
             return .failure(error)
         case .success(let response):
             
-            if response.isNotAuthorized {
-                //TODO: refresh token
-                //self.tokenManager?.getRefreshToken()
+            if let serverError = response.checkServerError() {
+                return serverError
             }
+            
+            if response.isNotAuthorized {
+                self.tokenManager?.clearTokensAndHandleLogout()
+                return .failure(MoyaError.underlying(LeoProviderError.securityError, response))
+            }
+            
+            if let code = response.parseCode() {
+                
+            }
+            
             
             if let data = response.parseSuccess() {
                 return data
             }
             
-            if let serverError = response.checkServerError() {
-                return serverError
-            }
+            
             
             return .failure(MoyaError.statusCode(response))
         }

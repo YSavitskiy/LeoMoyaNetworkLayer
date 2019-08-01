@@ -22,6 +22,29 @@ internal enum L10n {
       internal static let message = L10n.tr("Localizable", "Authentication.welcome.message")
     }
   }
+
+  internal enum Errors {
+    internal enum LeoProvider {
+      internal enum BadLeoResponse {
+        /// Could not parse response
+        internal static let description = L10n.tr("Localizable", "Errors.LeoProvider.badLeoResponse.description")
+        /// NetworkResponse is not valid
+        internal static let title = L10n.tr("Localizable", "Errors.LeoProvider.badLeoResponse.title")
+      }
+      internal enum SecurityError {
+        /// The client is not authenticated
+        internal static let description = L10n.tr("Localizable", "Errors.LeoProvider.securityError.description")
+        /// Authentication is required
+        internal static let title = L10n.tr("Localizable", "Errors.LeoProvider.securityError.title")
+      }
+      internal enum ServerError {
+        /// Unexpected behaviour for the server Or there is no handlers for it.
+        internal static let description = L10n.tr("Localizable", "Errors.LeoProvider.serverError.description")
+        /// Server error
+        internal static let title = L10n.tr("Localizable", "Errors.LeoProvider.serverError.title")
+      }
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

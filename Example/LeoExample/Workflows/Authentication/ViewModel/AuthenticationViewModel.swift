@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import LEONetworkLayer
 
 
 enum AuthenticationViewModelState {
@@ -25,6 +26,7 @@ class AuthenticationViewModel {
     let errorMessage = BehaviorRelay<String?>(value: nil)
     let title = BehaviorRelay<String?>(value: nil)
     let onNextEvent = PublishRelay<Void>()
+    let onSuccessEvent = PublishRelay<Void>()
     let number = BehaviorRelay<String?>(value: nil)
     let disposeBag = DisposeBag()
     
@@ -42,9 +44,18 @@ class AuthenticationViewModel {
             .bind(onNext: {[weak self] number in
                 if let `self` = self {
                     if let number = number {
-                        self.context.accountService.sendPhone(phone: number).subscribe { event in
-                            
-                            }.disposed(by: self.disposeBag)
+                        self.context.accountService.sendPhone(phone: number).subscribe({[weak self] event in
+                            switch event {
+                            case let .success(response):
+                                self?.onSuccessEvent.accept(())
+                            case let .error(error):
+                                if let leoError = error.localizedLeoError {
+                                    self?.errorMessage.accept(leoError.infoString)
+                                } else {
+                                    self?.errorMessage.accept(error.localizedDescription)
+                                }
+                            }
+                            }).disposed(by: self.disposeBag)
                     }
                 }
             })

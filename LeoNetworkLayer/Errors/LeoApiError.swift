@@ -1,6 +1,6 @@
 import Foundation
 
-enum ApiError: String, Error {
+enum LeoApiError: String, Codable, Error {
     
     case Unknown = "Unknown"
     case InvalidAuthData = "sec.invalid_auth_data"
