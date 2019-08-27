@@ -16,7 +16,7 @@ public class RefreshTokenPlugin: PluginType {
     private var request: (RequestType, TargetType)?
     private var result: Result<Moya.Response, MoyaError>?
     private var authorizationType: Moya.AuthorizationType  = .none
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     public init(tokenManager: ILeoTokenManager) {
         self.tokenManager = tokenManager
@@ -40,11 +40,9 @@ public class RefreshTokenPlugin: PluginType {
     public func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         self.result = result
     }            
-    @discardableResult
+    
+    
     public func process(_ result: Result<Response, MoyaError>, target: TargetType) -> Result<Response, MoyaError> {
-        
-        
-        print("processToken")
         
         let result = result
         
@@ -53,11 +51,14 @@ public class RefreshTokenPlugin: PluginType {
             return .failure(error)
         case .success(let response):
             
+            //TODO: Remove this plugin if overriding of the request is well
+            //TODO: Commented
             if case .none = self.authorizationType {
                 return .success(response)
             }
-            
-            if response.isNotAuthorized {                
+        
+            if response.isNotAuthorized {
+                /*
                 if let reshreshRequest = self.tokenManager.refreshToken() {
                     let timeout = self.tokenManager.refreshTokenTimeoutSeconds
                     let startTime = DispatchTime.now()
@@ -65,9 +66,9 @@ public class RefreshTokenPlugin: PluginType {
                     var attempts = self.tokenManager.numberRefreshTokenAttempts
                     repeat {
                         attempts -= 1
-                        
+                        self.disposeBag = DisposeBag()
                         reshreshRequest.subscribe { event in
-                            //defer { semaphore.signal() }
+                            defer { semaphore.signal() }
                             switch event {                            
                             case let .success(response):
                                 print("SSUCCESS \(attempts)")
@@ -76,31 +77,22 @@ public class RefreshTokenPlugin: PluginType {
                                 print(error)
                             }
                             }.disposed(by: self.disposeBag)
+                       
                         print("WAIT \(attempts)")
-                        
-                        _ = semaphore.wait(timeout: startTime + timeout)
-                        
+                        _ = semaphore.wait()
                         print("PASS \(attempts)")
                     } while attempts>0
-                    
-                    
                 } else {
                     self.tokenManager.clearTokensAndHandleLogout()
                     return .failure(MoyaError.underlying(LeoProviderError.securityError, response))
                 }
                 
-                
-                
-                
-                
-            
-                
+ 
                 
                 print("RefreshNotAuthorizedTOKEN=")
                 
                 print("NotAuthorized2")
-                
-                
+            */
                 
                 /*
                 
@@ -174,14 +166,14 @@ public class RefreshTokenPlugin: PluginType {
                  }
                  }*/
                 
-                print("AuthEnd")
+                //print("AuthEnd")
                 //response.map(<#T##type: Decodable.Protocol##Decodable.Protocol#>)
                 //TODO: refresh token
                 //self.tokenManager?.getRefreshToken()
                 
                 
                 
-                print("RefreshTokenEnd")
+                //print("RefreshTokenEnd")
             }
             
             return .success(response)
