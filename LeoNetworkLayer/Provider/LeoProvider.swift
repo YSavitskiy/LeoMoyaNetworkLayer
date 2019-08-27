@@ -18,7 +18,7 @@ open class LeoProviderFactory<T:TargetType> {
         
         let sessionManager = makeSessionManager(customConfiguration: customConfiguration)
         
-        return MoyaProvider<T>(stubClosure:{ _ in return mockType }, manager: sessionManager, plugins: allPlugins)
+        return MoyaProvider<T>(stubClosure:{ _ in return mockType }, callbackQueue: nil, manager: sessionManager, plugins: allPlugins)
     }
     
     

@@ -16,6 +16,7 @@ public class RefreshTokenPlugin: PluginType {
     private var request: (RequestType, TargetType)?
     private var result: Result<Moya.Response, MoyaError>?
     private var authorizationType: Moya.AuthorizationType  = .none
+    private let disposeBag = DisposeBag()
     
     public init(tokenManager: ILeoTokenManager) {
         self.tokenManager = tokenManager
@@ -39,8 +40,9 @@ public class RefreshTokenPlugin: PluginType {
     public func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
         self.result = result
     }            
-    
+    @discardableResult
     public func process(_ result: Result<Response, MoyaError>, target: TargetType) -> Result<Response, MoyaError> {
+        
         
         print("processToken")
         
@@ -55,13 +57,75 @@ public class RefreshTokenPlugin: PluginType {
                 return .success(response)
             }
             
-            if response.isNotAuthorized {
-                self.tokenManager.clearTokensAndHandleLogout()
-                return .failure(MoyaError.underlying(LeoProviderError.securityError, response))
-                                
+            if response.isNotAuthorized {                
+                if let reshreshRequest = self.tokenManager.refreshToken() {
+                    let timeout = self.tokenManager.refreshTokenTimeoutSeconds
+                    let startTime = DispatchTime.now()
+                    let semaphore = DispatchSemaphore(value: 0)
+                    var attempts = self.tokenManager.numberRefreshTokenAttempts
+                    repeat {
+                        attempts -= 1
+                        
+                        reshreshRequest.subscribe { event in
+                            //defer { semaphore.signal() }
+                            switch event {                            
+                            case let .success(response):
+                                print("SSUCCESS \(attempts)")
+                            case let .error(error):
+                                print("ERRROR \(attempts)")
+                                print(error)
+                            }
+                            }.disposed(by: self.disposeBag)
+                        print("WAIT \(attempts)")
+                        
+                        _ = semaphore.wait(timeout: startTime + timeout)
+                        
+                        print("PASS \(attempts)")
+                    } while attempts>0
+                    
+                    
+                } else {
+                    self.tokenManager.clearTokensAndHandleLogout()
+                    return .failure(MoyaError.underlying(LeoProviderError.securityError, response))
+                }
+                
+                
+                
+                
+                
+            
+                
+                
                 print("RefreshNotAuthorizedTOKEN=")
                 
                 print("NotAuthorized2")
+                
+                
+                
+                /*
+                
+                func monitorResource() -> Observable<String?> {
+                    return Observable.of("a", "Hello World")
+                }
+                
+                let expectedValue = "fe"
+                let monitoringFound = monitorResource().filter { $0 == expectedValue }
+                
+                let timeoutSeconds = 4.0
+                let timeout = Observable<String?>.error(RxError.timeout)
+                
+                let monitoringWithTimeout = Observable<Any>.never()
+                    .timeout(timeoutSeconds, scheduler: MainScheduler.instance)
+                    .takeUntil(monitoringFound)
+                
+                _ = monitoringWithTimeout
+                    .debug("sequence")
+                    .subscribe({_ in print("timeOuted")})
+                
+                //sleep(20)
+                */
+                
+                /*
                 
                 func monitorResource() -> Observable<String?> {
                     return Observable.of("a", "Hell")
@@ -78,6 +142,10 @@ public class RefreshTokenPlugin: PluginType {
                     .takeUntil(monitoringFound)
                 
                 _ = monitoringWithTimeout.debug("sequence").subscribe{}
+                
+                */
+                
+                
                 
                 /*
                  self.tokenManager?.refreshToken()?.subscribe { event in
@@ -115,6 +183,7 @@ public class RefreshTokenPlugin: PluginType {
                 
                 print("RefreshTokenEnd")
             }
+            
             return .success(response)
         }
     }

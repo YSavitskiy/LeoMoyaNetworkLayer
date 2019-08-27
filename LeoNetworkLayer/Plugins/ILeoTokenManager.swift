@@ -2,10 +2,10 @@ import RxSwift
 import Moya
 
 public protocol ILeoTokenManager {
-    var refreshTokenTimeout: TimeInterval {get}
+    var refreshTokenTimeoutSeconds: Double {get}
+    var numberRefreshTokenAttempts: Int {get}
     func getAccessToken() -> String
-    func getRefreshToken() -> String
-    func refreshToken() -> Single<Moya.Response>?
+    func refreshToken() -> Single<String?>? //Have to return a new access token
     func clearTokensAndHandleLogout()
 }
 
