@@ -123,10 +123,6 @@ class AccountService: IAccountService {
 
 extension AccountService: ILeoTokenManager {
     
-    var refreshTokenTimeoutSeconds: Double {
-        return 12.0
-    }
-    
     var numberRefreshTokenAttempts: Int {
         return 3
     }
@@ -134,8 +130,8 @@ extension AccountService: ILeoTokenManager {
     func getAccessToken() -> String {
         return accountStorage.accessToken ?? ""
     }
-        
-    func refreshToken() -> Single<String?>? {
+    
+    func refreshToken() -> Single<Void>? {
         if let token = accountStorage.refreshToken {
             return accountProvider.rx.request(.refreshToken(refreshToken: token ))
                 .flatMap({
@@ -143,7 +139,7 @@ extension AccountService: ILeoTokenManager {
                     if let tokens = try? response.map(TokenResponse.self) {
                         self.accountStorage.accessToken = tokens.accessToken
                         self.accountStorage.refreshToken = tokens.refreshToken
-                        return Single.just(self.accountStorage.accessToken)
+                        return Single.just(())
                     } else {
                         throw AccountServiceError.noTokenError
                     }

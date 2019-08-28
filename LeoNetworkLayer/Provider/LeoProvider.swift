@@ -15,20 +15,19 @@ import RxSwift
 
 open class LeoProviderFactory<T:TargetType> {
     
-    public func makeProvider(tokenManager:ILeoTokenManager? = nil, mockType: StubBehavior = .never, plugins: [PluginType] = [], customConfiguration: URLSessionConfiguration?) -> MoyaProvider<T> {
+    public func makeProvider(tokenManager:ILeoTokenManager? = nil, mockType: StubBehavior = .never, callbackQueue: DispatchQueue? = nil, plugins: [PluginType] = [], customConfiguration: URLSessionConfiguration?) -> MoyaProvider<T> {
         
         let allPlugins = makeTokenPlugins(tokenManager: tokenManager) + makeLeoPlugins(tokenManager: tokenManager) + plugins
         
         let sessionManager = makeSessionManager(customConfiguration: customConfiguration)
         
-        let provider = LeoProvider<T>(stubClosure:{ _ in return mockType }, callbackQueue: nil, manager: sessionManager, plugins: allPlugins)
+        let provider = LeoProvider<T>(stubClosure:{ _ in return mockType }, callbackQueue: callbackQueue, manager: sessionManager, plugins: allPlugins)
         provider.tokenManager = tokenManager
         return provider
     }
     
     
     public func makeProvider(tokenManager:ILeoTokenManager? = nil, mockType: StubBehavior = .never, plugins: [PluginType] = [], timeoutForRequest:TimeInterval = 20.0, timeoutForResponse: TimeInterval = 40.0) -> MoyaProvider<T> {
-        
         
         let configuration = makeConfiguration(timeoutForRequest: timeoutForRequest, timeoutForResponse: timeoutForResponse)
         
@@ -39,8 +38,7 @@ open class LeoProviderFactory<T:TargetType> {
         var result:[PluginType] = []
         if let tokenManager = tokenManager {
             let accessTokenPlugin = AccessTokenPlugin(tokenClosure: tokenManager.getAccessToken)
-            let refreshTokenPlugin = RefreshTokenPlugin(tokenManager: tokenManager)
-            result = [accessTokenPlugin, refreshTokenPlugin]
+            result = [accessTokenPlugin]
         }
         return result
     }
@@ -84,8 +82,18 @@ private class LeoProvider<Target>: MoyaProvider<Target> where Target: Moya.Targe
     private var disposeBag = DisposeBag()
     
     override func request(_ target: Target, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping Completion) -> Cancellable {
-        
-        var attempts: Int
+        if let tokenManer = self.tokenManager {
+            var attempts = tokenManer.numberRefreshTokenAttempts
+            if attempts > 10 {
+                attempts = 10
+            }
+            return self.customRequest(target, callbackQueue: callbackQueue, progress: progress, completion: completion, attempts: attempts)
+        } else {
+            return super.request(target, callbackQueue: callbackQueue, progress: progress, completion: completion)
+        }
+    }
+    
+    private func customRequest(_ target: Target, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none, completion: @escaping Completion, attempts: Int) -> Cancellable {
         
         return super.request(target, callbackQueue: callbackQueue, progress: progress, completion:
             { (result) in
@@ -94,41 +102,50 @@ private class LeoProvider<Target>: MoyaProvider<Target> where Target: Moya.Targe
                 
                 switch result {
                 case .success:
-                     finalCompletion(result)
+                    finalCompletion(result)
                 case .failure(let error):
-                    if let authorizable = target as? AccessTokenAuthorizable, let tokenManager = self.tokenManager {
-                        var attempts = tokenManager.numberRefreshTokenAttempts
-                        let requestAuthorizationType = authorizable.authorizationType
+                    if let authorizable = target as? AccessTokenAuthorizable,
+                       let tokenManager = self.tokenManager {
+                            var attemptsLeft = attempts
+                            let requestAuthorizationType = authorizable.authorizationType
                         
-                        if case .none = requestAuthorizationType {
-                            finalCompletion(result)
-                        } else {
-                            if let error = error.baseLeoError {
-                                if case .securityError = error.code {
-                                    self.tokenManager?.refreshToken()?.subscribe {
-                                        token in
-                                            attempts -= 1
+                            if case .none = requestAuthorizationType {
+                                finalCompletion(result)
+                            } else {
+                                if let error = error.baseLeoError {
+                                    if case .securityError = error.code {
+                                        tokenManager.refreshToken()?.subscribe {
+                                            [weak self] _ in
                                             let failedResult: Result<Response, MoyaError> = .failure(MoyaError.underlying(LeoProviderError.refreshTokenFailed, nil))
-                                            if attempts < 0 {
-                                                finalCompletion(failedResult)
-                                                self.tokenManager?.clearTokensAndHandleLogout()
+                                            
+                                            if let `self` = self {
+                                                attemptsLeft -= 1
+                                            
+                                                if attemptsLeft <= 0 {
+                                                    finalCompletion(failedResult)
+                                                    self.tokenManager?.clearTokensAndHandleLogout()
+                                                } else {
+                                                    _ = self.customRequest(target, callbackQueue: callbackQueue, progress: progress, completion: { (result) in
+                                                        finalCompletion(result)
+                                                    }, attempts: attemptsLeft)
+                                                }
                                             } else {
-                                                //TODO attempts
-                                                super.request(target, callbackQueue: callbackQueue, progress: progress, completion: { (result) in
-                                                    finalCompletion(result)
-                                                })
+                                                finalCompletion(failedResult)
                                             }
                                         }.disposed(by: self.disposeBag)
+                                    }
+                                } else {
+                                    completion(result)
                                 }
-                            } else {
-                                completion(result)
                             }
-                        }
                     } else {
                         completion(result)
                     }
                 }
         })
     }
+    
+  
+
 }
 
