@@ -1,4 +1,4 @@
-# LEONetworkLayer 
+# LEONetworkLayer
 Network layer for iOS apps with Magora's Leopold protocol
 
 
@@ -16,7 +16,7 @@ LEONetworkLayer is available through [CocoaPods](http://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'LEONetworkLayer'
+pod 'LEONetworkLayer', '~> 1.0.0'
 ```
 
 ## Author
