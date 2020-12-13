@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D4570E2BB37C4A36A58D305 /* Pods_LeoExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DCAD131A5C196E40F0EE0C /* Pods_LeoExample.framework */; };
+		7108BA8325815B950031ECD3 /* Error+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108BA8225815B950031ECD3 /* Error+Localization.swift */; };
 		8D4546FB22E1BE45008B7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4546FA22E1BE45008B7C61 /* AppDelegate.swift */; };
 		8D45470222E1BE46008B7C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D45470122E1BE46008B7C61 /* Assets.xcassets */; };
 		8D45470522E1BE46008B7C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D45470322E1BE46008B7C61 /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		2D5FF8AD342DF512A0BA5117 /* Pods-LeoExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoExample.debug.xcconfig"; path = "Target Support Files/Pods-LeoExample/Pods-LeoExample.debug.xcconfig"; sourceTree = "<group>"; };
+		7108BA8225815B950031ECD3 /* Error+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Localization.swift"; sourceTree = "<group>"; };
 		80DCAD131A5C196E40F0EE0C /* Pods_LeoExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4546F722E1BE45008B7C61 /* LeoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4546FA22E1BE45008B7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				9AA92AA02313FB5E00B64658 /* LeoApiError+Localization.swift */,
 				9AE179AA22F1B811006DECBD /* LeoProviderError+Localization.swift */,
 				9AEDD4FB22F2E7FF00F3AF43 /* MoyaError+Localization.swift */,
+				7108BA8225815B950031ECD3 /* Error+Localization.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				9AEB976E22EF05C00060E6F8 /* NewsTarget.swift in Sources */,
 				9AE179AB22F1B811006DECBD /* LeoProviderError+Localization.swift in Sources */,
 				9AEB976A22EF05810060E6F8 /* NewsService.swift in Sources */,
+				7108BA8325815B950031ECD3 /* Error+Localization.swift in Sources */,
 				9AEDD4FE22F3EF7300F3AF43 /* AccountServiceError.swift in Sources */,
 				9AEB96F822E9915F0060E6F8 /* AuthenticationViewController.swift in Sources */,
 				9AA92A6C230E98D100B64658 /* CursorRequestParameters.swift in Sources */,
